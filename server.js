@@ -7,16 +7,13 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para servir arquivos estáticos
 app.use(express.static('public'));
-
 app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/contact', (req, res) => {
     const { nome, email, celular, mensagem } = req.body;
 
-    // Verificação para ambiente de teste
     if (process.env.EMAIL_USER === 'teste@example.com') {
         console.log(`Simulação de envio de email:
 Nome: ${nome}
