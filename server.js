@@ -7,9 +7,13 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+app.use(express.static('public')); // Certifique-se de que 'public' é o nome do seu diretório estático
 app.use(cors());
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 app.post('/contact', (req, res) => {
     const { nome, email, celular, mensagem } = req.body;
