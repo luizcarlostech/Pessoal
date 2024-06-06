@@ -7,12 +7,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static('public')); // Certifique-se de que 'public' é o nome do seu diretório estático
+app.use(express.static('public')); // Serve arquivos estáticos da pasta 'public'
 app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/index.html'); // Serve o arquivo index.html na raiz
 });
 
 app.post('/contact', (req, res) => {
